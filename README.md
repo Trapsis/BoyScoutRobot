@@ -6,3 +6,6 @@ NodeMCU based robot
 Code in C++ for obsticle avoidance<br>
 PPT for Merit Badge presentation - assembly instructions and wiring diagram<br>
 Robotics Merit Badge details<br>
+
+BoyScoutRobot.ino - obsticle avoidance<br>
+BoyScoutRobotRC.ino - remote control over wifi<br>
