@@ -7,9 +7,9 @@
  *  Browse to 192.168.4.1 after connecting to control the robot 
  * 
  *   By Bill Caterino  -  ZigZone Automation
- * 
+ */
  
- #include <ESP8266WiFi.h>
+#include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 
@@ -45,6 +45,8 @@ String htmlPage = R"rawliteral(
         background-color: #4CAF50;
         color: #ffffff;
         padding: 10px 20px;
+        width: 100px;
+        height: 80px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -52,30 +54,64 @@ String htmlPage = R"rawliteral(
     .button:hover {
         background-color: #3e8e41;
       }
+    .table {
+        margin-left: auto;
+        margin-right: auto;
+      }
     </style>
   </head>
   <body>
-    <h1>WiFi Car Controller</h1>
-    <p id="status">Car is stopped</p>
-    <table>
+    <figure class="table">
+        <table align="center">
+            <tbody>
+                <tr>
+                    <td>
+                        <h1>WiFi Car Controller</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="text-align:center;">Car is stopped</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </figure>
+    <figure class="table">
+        <table align="center">
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <div class="raw-html-embed" style="text-align:center;"><button class="button" onclick="sendCommand('forward')">FWD</button></div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="raw-html-embed" style="text-align:center;"><button class="button" onclick="sendCommand('left')">L</button></div>
+                    </td>
+                    <td>
+                        <div class="raw-html-embed" style="text-align:center;"><button class="button" onclick="sendCommand('stop')">Stop</button></div>
+                    </td>
+                    <td>
+                        <div class="raw-html-embed" style="text-align:center;"><button class="button" onclick="sendCommand('right')">R</button></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <div class="raw-html-embed" style="text-align:center;"><button class="button" onclick="sendCommand('backward')">BACK</button></div>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </figure>
+    <table align="center">
       <tr>
-        <td><button class="button" onclick="sendCommand('forward')">FWD</button></td>
-      </tr>
-      <tr>
-        <td><button class="button" onclick="sendCommand('left')">L</button></td>
-        <td><button class="button" onclick="sendCommand('stop')">Stop</button></td>
-        <td><button class="button" onclick="sendCommand('right')">R</button></td>
-      </tr>
-      <tr>
-        <td><button class="button" onclick="sendCommand('backward')">BACK</button></td>
-      </tr>
-    </table>
-    
-
-    <table>
-      <tr>
-        <td><button class="button" onclick="sendCommand('faster')">FAST</button></td>
         <td><button class="button" onclick="sendCommand('slower')">SLOW</button></td>
+        <td><button class="button" onclick="sendCommand('faster')">FAST</button></td>
       </tr>
     </table>
     <script>
